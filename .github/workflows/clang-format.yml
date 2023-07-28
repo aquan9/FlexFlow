@@ -11,9 +11,6 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v2
 
-    - name: Go into the scripts directory
-      run: cd scripts
-
     - name: Execute format.sh script
-      run: ./format.sh
+      run: scripts/format.sh
 
