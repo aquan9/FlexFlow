@@ -61,6 +61,7 @@ jobs:
           #fi
           ../config/config.linux
           make -j $n_build_cores ${{ matrix.library }}
+          cd lib/${{ matrix.library }}
           ctest
 
 
