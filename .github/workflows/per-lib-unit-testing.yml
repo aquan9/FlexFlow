@@ -43,6 +43,9 @@ jobs:
           environment-file: packaging/conda/environment.yml
           auto-activate-base: false
 
+      - name: Activate tmate debugger
+        uses: mxschmitt/action-tmate@v3
+
       - name: Build lib ${{ matrix.library }} and run ctest
         run: |
           export CUDNN_DIR=/usr/local/cuda
@@ -62,7 +65,7 @@ jobs:
           ../config/config.linux
           make -j $n_build_cores ${{ matrix.library }}
           cd lib/${{ matrix.library }}
-          ctest --build-and-test ./ ./lib/${{ matrix.library }}/test
+          ctest --build-and-test ./ ./lib/${{ matrix.library }}/test --build-generator "Unix Makefiles"
 
 
 
